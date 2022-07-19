@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Chon76
+- 👋 Hi, I’m chon
 I'm a 24 years old Computer Science student from Hungary. Currently studying and working.
 - 👀 I’m interested in ...
 Web and mobile dev.
