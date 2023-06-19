@@ -1,0 +1,78 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "final_space": true,
+    "version": 2,
+    "console_title_template": "😶 {{.PWD}}",
+    "newline": true,
+    "transient_prompt": {
+      "background": "transparent",
+      "foreground": "#00ff00",
+      "template": "🧪 {{ .Folder }} \uf105 "
+    },
+    "blocks": [
+        {
+            "type": "prompt",
+            "alignment": "left",
+            "segments": [
+                {
+                    "type": "text",
+                    "style": "plain",
+                    "foreground": "#00ff00",
+                    "template": "🧪"
+                },
+                {
+                    "type": "path",
+                    "style": "plain",
+                    "foreground": "#00ff00",
+                    "properties": {
+                        "style": "folder"
+                    }
+                },
+                {
+                  "type": "text",
+                  "style": "plain",
+                  "foreground": "#00ff00",
+                  "template": "\uf105"
+              }
+            ]
+        },
+        {
+            "type": "rprompt",
+            "alignment": "right",
+            "segments": [
+                {
+                    "type": "node",
+                    "style": "plain",
+                    "foreground": "#3C873A",
+                    "properties": {
+                      "display_mode": "always",
+                      "home_enabled": true
+                    },
+                    "template": " \uE718 {{ .Full }}"
+                },
+                {
+                  "type": "ruby",
+                  "style": "plain",
+                  "foreground": "#9c1006",
+                  "template": " \ue791 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+                },
+                {
+                  "type": "project",
+                  "style": "plain",
+                  "foreground": "#E9C46A",
+                  "template": " \uea79 {{.Version}}"
+                },
+                {
+                  "type": "executiontime",
+                  "style": "plain",
+                  "foreground": "#83769c",
+                  "template": " \udb81\udd1f{{ .FormattedMs }}\u2800",
+                  "properties": {
+                    "style": "roundrock",
+                    "threshold": 0
+                  }
+                }
+            ]
+        }
+    ]
+}
