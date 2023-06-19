@@ -1,5 +1,5 @@
 - 👋 Hi, I’m chon
-I'm a 24 years old Computer Science student from Hungary.
+I am 25 years old. Currently working as a Frontend Dev.
 - 👀 I’m interested in ... 
 Web and mobile dev.
 - 👨‍💻 I'm hitting keys on ...
