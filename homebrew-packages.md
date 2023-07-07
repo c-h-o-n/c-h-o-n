@@ -7,12 +7,12 @@
 - `fnm`: Fast and simple Node.js version manager
 - `gh`: GitHub command-line tool
 - `git`: Distributed revision control system
+- `glab`: Open-source GitLab command-line tool
 - `go`: Open source programming language to build simple/reliable/efficient software
 - `htop`: Improved top (interactive process viewer)
 - `oh-my-posh`: Prompt theme engine for any shell
 - `lolcat`: Rainbows and unicorns in your console!
 - `neofetch`: Fast, highly customisable system info script
-- `neovim`: Ambitious Vim-fork focused on extensibility and agility
 - `pwgen`: Password generator
 - `rbenv`: Ruby version manager
 - `tetris`: Tetris in your terminal
@@ -23,8 +23,8 @@
 - `trash`: CLI tool that moves files or folder to the trash
 - `wget`: Internet file retriever
 
+
 ## Cask
-- `adobe-creative-cloud`: (Adobe Creative Cloud) Collection of apps and services for photography, design, video, web, and UX
 - `amethyst`: (Amethyst) Automatic tiling window manager similar to xmonad
 - `coconutbattery`: (coconutBattery) Tool to show live information about the batteries in various devices
 - `docker`: Pack, ship and run any application as a lightweight container
