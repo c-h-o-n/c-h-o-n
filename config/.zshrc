@@ -1,4 +1,3 @@
-
 # Uncomment the folling line for startup time profiling 
 # zmodload zsh/zprof
 
@@ -77,7 +76,7 @@ ZSH_THEME="cloud"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,12 +105,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# Load aliases
-if [ -f ~/.aliasrc ]; then
-    source ~/.aliasrc
-else
-    print "404: ~/aliasrc not found."
-fi
 
 # Load packages
   # fnm
@@ -123,16 +116,40 @@ fi
   # Oh-my-posh init
   eval "$(oh-my-posh init zsh --config ~/.oh-my-posh.json)"
 
-  # pnpm
-  export PNPM_HOME="/Users/ducsaib/Library/pnpm"
-  case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-  esac
-  # pnpm end
   # tabtab source for packages
   # uninstall by removing these lines
   [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
+  # fzf
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+  # export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+
+
+# Override fzf-cd-widget
+scoped-fzf-cd-widget() {
+    local cmd="${FZF_ALT_C_COMMAND:-"command find ~/Desktop/work ~/Desktop/personal ~/Desktop/sandbox -maxdepth 1 -type d"}"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --scheme=path --bind=ctrl-z:ignore ${FZF_DEFAULT_OPTS-} ${FZF_ALT_C_OPTS-}" $(__fzfcmd) +m)"
+  if [[ -z "$dir" ]]; then
+    zle redisplay
+    return 0
+  fi
+  zle push-line # Clear buffer. Auto-restored on next prompt.
+  BUFFER="cd ${(q)dir}"
+  zle accept-line
+  local ret=$?
+  unset dir # ensure this doesn't end up appearing in prompt expansion
+  zle reset-prompt
+  return $ret
+}
+zle     -N             scoped-fzf-cd-widget  
+bindkey -M emacs '\ec' scoped-fzf-cd-widget
+bindkey -M vicmd '\ec' scoped-fzf-cd-widget
+bindkey -M viins '\ec' scoped-fzf-cd-widget
+
 # Uncomment the following line for startup time profilling.
 # zprof
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
