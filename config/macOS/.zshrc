@@ -9,7 +9,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Paths to packages
 
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -127,7 +126,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Override fzf-cd-widget
-scoped-fzf-cd-widget() {
+custom-fzf-cd-widget() {
     local cmd="${FZF_ALT_C_COMMAND:-"command find ~/Desktop/work ~/Desktop/personal ~/Desktop/sandbox -maxdepth 1 -type d"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --scheme=path --bind=ctrl-z:ignore ${FZF_DEFAULT_OPTS-} ${FZF_ALT_C_OPTS-}" $(__fzfcmd) +m)"
@@ -143,13 +142,21 @@ scoped-fzf-cd-widget() {
   zle reset-prompt
   return $ret
 }
-zle     -N             scoped-fzf-cd-widget  
-bindkey -M emacs '\ec' scoped-fzf-cd-widget
-bindkey -M vicmd '\ec' scoped-fzf-cd-widget
-bindkey -M viins '\ec' scoped-fzf-cd-widget
+zle     -N             custom-fzf-cd-widget  
+bindkey -M emacs '\ec' custom-fzf-cd-widget
+bindkey -M vicmd '\ec' custom-fzf-cd-widget
+bindkey -M viins '\ec' custom-fzf-cd-widget
 
-# Uncomment the following line for startup time profilling.
-# zprof
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+# bun completions
+[ -s "/Users/ducsaib/.bun/_bun" ] && source "/Users/ducsaib/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Uncomment the following line for startup time profilling.
+# zprof
