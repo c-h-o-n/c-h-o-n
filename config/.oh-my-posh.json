@@ -5,8 +5,9 @@
   "transient_prompt": {
     "background": "transparent",
     "foreground": "#00ff00",
-    "template": "🧪 {{ .Folder }} \uf105 "
+    "template": "\uf0c3 {{ .Folder }} \uf105 "
   },
+  "final_space": true,
   "blocks": [
     {
       "type": "prompt",
@@ -16,21 +17,13 @@
           "type": "text",
           "style": "plain",
           "foreground": "#00ff00",
-          "template": "🧪"
-        },
-        {
-          "type": "path",
-          "style": "plain",
-          "foreground": "#00ff00",
-          "properties": {
-            "style": "folder"
-          }
+          "template": "\udb80\udc95 {{ .Folder }} "
         },
         {
           "type": "text",
           "style": "plain",
           "foreground": "#00ff00",
-          "template": "\uf105 "
+          "template": "\uf105"
         }
       ]
     },
@@ -69,9 +62,15 @@
           "template": " \uE718 {{ .Full }}"
         },
         {
+          "type": "rust",
+          "style": "plain",
+          "foreground": "#BE4026",
+          "template": "  {{ .Full }}"
+        },
+        {
           "type": "ruby",
           "style": "plain",
-          "foreground": "#9c1006",
+          "foreground": "#9C1006",
           "template": " \ue791 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
         },
         {
