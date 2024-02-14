@@ -121,35 +121,10 @@ source $ZSH/oh-my-zsh.sh
 
   # fzf
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-  # export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
-
-
-# Override fzf-cd-widget
-custom-fzf-cd-widget() {
-    local cmd="${FZF_ALT_C_COMMAND:-"command find ~/Desktop/work ~/Desktop/personal ~/Desktop/sandbox -maxdepth 1 -type d"}"
-  setopt localoptions pipefail no_aliases 2> /dev/null
-  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --scheme=path --bind=ctrl-z:ignore ${FZF_DEFAULT_OPTS-} ${FZF_ALT_C_OPTS-}" $(__fzfcmd) +m)"
-  if [[ -z "$dir" ]]; then
-    zle redisplay
-    return 0
-  fi
-  zle push-line # Clear buffer. Auto-restored on next prompt.
-  BUFFER="cd ${(q)dir}"
-  zle accept-line
-  local ret=$?
-  unset dir # ensure this doesn't end up appearing in prompt expansion
-  zle reset-prompt
-  return $ret
-}
-zle     -N             custom-fzf-cd-widget  
-bindkey -M emacs '\ec' custom-fzf-cd-widget
-bindkey -M vicmd '\ec' custom-fzf-cd-widget
-bindkey -M viins '\ec' custom-fzf-cd-widget
-
+    # Override FZF_ALT_C_COMMAND
+    export FZF_ALT_C_COMMAND="command find ~/Desktop/work ~/Desktop/personal ~/Desktop/sandbox -maxdepth 1 -type d"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 
 # bun completions
 [ -s "/Users/ducsaib/.bun/_bun" ] && source "/Users/ducsaib/.bun/_bun"
