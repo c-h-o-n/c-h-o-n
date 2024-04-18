@@ -1,9 +1,7 @@
 - 👋 Hi, I’m chon
-I am 25 years old. Currently working as a Frontend Dev.
+I am 26 years old. Currently working as a Frontend Dev.
 - 👀 I’m interested in ... 
 Web and mobile dev.
-- 👨‍💻 I'm hitting keys on ...
- MacOs, Linux and Windows using vs-code and the mighty terminal.
 
 [![GitHub Streak](https://streak-stats.demolab.com/?user=c-h-o-n&theme=holi-theme&hide_border=true&mode=weekly)](https://git.io/streak-stats)
 
