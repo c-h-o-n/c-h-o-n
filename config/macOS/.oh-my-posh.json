@@ -62,10 +62,22 @@
           "template": " \uE718 {{ .Full }}"
         },
         {
+          "type": "pnpm",
+          "style": "diamond",
+          "foreground": "#F9AD00",
+          "properties": {
+            "display_mode": "files",
+            "extensions": [
+              "pnpm-lock.yaml"
+            ]
+          },
+          "template": " \udb80\udec1 {{ .Full }}"
+        },
+        {
           "type": "rust",
           "style": "plain",
           "foreground": "#BE4026",
-          "template": "  {{ .Full }}"
+          "template": " \ue7a8 {{ .Full }}"
         },
         {
           "type": "ruby",
