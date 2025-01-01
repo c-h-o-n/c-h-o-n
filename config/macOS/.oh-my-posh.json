@@ -1,13 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 2,
-  "console_title_template": "😶 {{.PWD}}",
   "transient_prompt": {
-    "background": "transparent",
+    "template": "\uf0c3 {{ .Folder }} \uf105 ",
     "foreground": "#00ff00",
-    "template": "\uf0c3 {{ .Folder }} \uf105 "
+    "background": "transparent"
   },
-  "final_space": true,
+  "console_title_template": "😶 {{.Folder}}",
   "blocks": [
     {
       "type": "prompt",
@@ -16,14 +14,14 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#00ff00",
-          "template": "\udb80\udc95 {{ .Folder }} "
+          "template": "\udb80\udc95 {{ .Folder }}",
+          "foreground": "#00ff00" 
         },
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#00ff00",
-          "template": "\uf105"
+          "template": " \uf105",
+          "foreground": "#00ff00" 
         }
       ]
     },
@@ -33,75 +31,66 @@
       "segments": [
         {
           "type": "git",
-          "style": "plain",
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "untracked_modes": {
+              "/Users/user/Projects/oh-my-posh/": "no"
+            }
+          },
+          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }}",
           "foreground": "#ffeb3b",
+          "style": "plain",
           "foreground_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFEB3B{{ end }}",
             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}",
             "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
             "{{ if gt .Behind 0 }}#B388FB{{ end }}"
-          ],
-          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}",
-          "properties": {
-            "fetch_status": true,
-            "fetch_stash_count": true,
-            "fetch_upstream_icon": true,
-            "untracked_modes": {
-              "/Users/user/Projects/oh-my-posh/": "no"
-            }
-          }
+          ]
         },
         {
           "type": "node",
           "style": "plain",
-          "foreground": "#3C873A",
           "properties": {
             "display_mode": "always",
-            "home_enabled": true
+            "home_enabled": true,
+            "fetch_package_manager": true
           },
-          "template": " \uE718 {{ .Full }}"
-        },
-        {
-          "type": "pnpm",
-          "style": "diamond",
-          "foreground": "#F9AD00",
-          "properties": {
-            "display_mode": "files",
-            "extensions": [
-              "pnpm-lock.yaml"
-            ]
-          },
-          "template": " \udb80\udec1 {{ .Full }}"
+          "template": " \ue718 {{ .Full }} {{ .PackageManagerIcon }}",
+          "foreground": "#3C873A"
         },
         {
           "type": "rust",
           "style": "plain",
-          "foreground": "#BE4026",
-          "template": " \ue7a8 {{ .Full }}"
+          "template": " \ue7a8 {{ .Full }}",
+          "foreground": "#BE4026"
         },
         {
           "type": "ruby",
           "style": "plain",
-          "foreground": "#9C1006",
-          "template": " \ue791 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
+          "template": " \ue791 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "foreground": "#9C1006"
         },
         {
           "type": "project",
           "style": "plain",
-          "foreground": "#E9C46A",
-          "template": " \uea79 {{.Version}}"
+          "template": " {{ if .Version }} \uea79 {{ .Version }} {{ end }}",
+          "foreground": "#E9C46A"
         },
         {
           "type": "executiontime",
           "style": "plain",
-          "foreground": "#83769c",
-          "template": " \udb81\udd1f{{ .FormattedMs }}\u2800",
           "properties": {
             "style": "roundrock",
             "threshold": 0
-          }
+          },
+          "template": "\udb81\udd1f{{ .FormattedMs }}\u2800",
+          "foreground": "#83769c"
         }
       ]
     }
-  ]
+  ],
+  "version": 3,
+  "final_space": true
 }
