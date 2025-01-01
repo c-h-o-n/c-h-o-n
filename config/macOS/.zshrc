@@ -43,7 +43,7 @@ ZSH_THEME="cloud"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -79,19 +79,17 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
 
 source $ZSH/oh-my-zsh.sh
 
+export EDITOR='nvim'
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -104,6 +102,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias vim="nvim"
+alias y="yazi"
+alias lg="lazygit" lgit="lazygit"
 
 # Load packages
   # fnm
@@ -124,14 +126,22 @@ source $ZSH/oh-my-zsh.sh
     # Override FZF_ALT_C_COMMAND
     export FZF_ALT_C_COMMAND="command find ~/Desktop/work ~/Desktop/personal ~/Desktop/sandbox -maxdepth 1 -type d"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# bun completions
-[ -s "/Users/ducsaib/.bun/_bun" ] && source "/Users/ducsaib/.bun/_bun"
+  # bun completions
+  [ -s "/Users/ducsaib/.bun/_bun" ] && source "/Users/ducsaib/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+  # bun
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+
+  # zoxide - better then cd
+  eval "$(zoxide init zsh)"
+  
+  # thefuck - corrects commands with typos
+  eval $(thefuck --alias fk)
+
 
 # Uncomment the following line for startup time profilling.
 # zprof
+
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
