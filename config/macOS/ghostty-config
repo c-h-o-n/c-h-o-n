@@ -1,0 +1,17 @@
+# General
+auto-update = off
+shell-integration-features = no-cursor
+
+# Theme
+theme = iTerm2 Default
+background = #000000
+foreground = #66ca4c
+font-size = 16
+cursor-color = #66ca4c
+cursor-style-blink = true
+cursor-style = block
+
+# Keys
+macos-option-as-alt = true
+keybind = super+backspace=text:\x15
+keybind = super+comma=text:nvim $HOME/Library/Application\x5C Support/com.mitchellh.ghostty/config\x0D
